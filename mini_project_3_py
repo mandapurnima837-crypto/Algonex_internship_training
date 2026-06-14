@@ -1,0 +1,73 @@
+'''Priya's Caffe System
+1. order: 'mocha','tea','Green tea','cold coffee', 'Latte', 'Cappuccino', 'Espresso',
+2. size: 'small-240', 'medium-320', 'large-360'
+3. price: 'mocha'- 150, 'tea'- 100, 'Green tea'- 120, 'cold coffee'- 130, 'Latte'- 140, 'Cappuccino'- 160, 'Espresso'- 170
+4. quantity: input from user
+5. add-on: biscuit, cookies
+6. Total Discount: 15% if total price is above 700
+7. total price: price * quantity
+'''
+
+# Priya's Caffe System
+menu = {
+    "mocha": 150,
+    "tea": 100,
+    "green tea": 120,
+    "cold coffee": 130,
+    "latte": 140,
+    "cappuccino": 160,
+    "espresso": 170
+}
+
+sizes = {
+    "small": 240,
+    "medium": 320,
+    "large": 360
+}
+
+# Display Menu
+print("------ Priya's Caffe System ------")
+print("\nAvailable Drinks:")
+for item, price in menu.items():
+    print(f"{item.title()} - ₹{price}")
+
+# User Input
+order = input("\nEnter your drink: ").lower()
+
+if order not in menu:
+    print("Sorry! Item not available.")
+else:
+    size = input("Enter size (small/medium/large): ").lower()
+
+    if size not in sizes:
+        print("Invalid size selected.")
+    else:
+        quantity = int(input("Enter quantity: "))
+
+        addon = input("Add-on (biscuit/cookies/none): ").lower()
+
+        price = menu[order]
+        total_price = price * quantity
+
+        # Apply Discount
+        discount = 0
+        if total_price > 700:
+            discount = total_price * 0.15
+
+        final_amount = total_price - discount
+
+        # Bill
+        print("\n------ BILL ------")
+        print("Drink:", order.title())
+        print("Size:", size.title(), "-", sizes[size], "ml")
+        print("Quantity:", quantity)
+        print("Add-on:", addon.title())
+        print("Price per Item: ₹", price)
+        print("Total Price: ₹", total_price)
+        print("Discount: ₹", discount)
+        print("Final Amount: ₹", final_amount)
+        print("------------------")
+
+            
+
+            
